@@ -1,28 +1,23 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld/>
+    <router-view></router-view>
+    <Tabbur></Tabbur>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+import Whole from '../static/css/whole.css'
+
+import Tabbur from './components/Tabbur'
 
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
+  name:'app',
+  components:{
+    Tabbur
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
