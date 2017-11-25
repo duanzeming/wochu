@@ -47,7 +47,8 @@ export default {
   left: 0;
   height: .5rem;
   width: 100%;
-  border-top: 1px solid red;
+  border-top: 1px solid #e5e5e5;
+  background: #fff;
 }
 .footer img{
   width: .29rem;
