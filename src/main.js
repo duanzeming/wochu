@@ -8,7 +8,6 @@ import axios from 'axios'
 
 // 使用原型链机制挂载
 Vue.prototype.axios = axios;
-
 // 引入路由
 import router from './router/index'
 
