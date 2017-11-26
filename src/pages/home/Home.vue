@@ -27,9 +27,9 @@
         <div class="goods-item clearfixed">
             <div class="new">
                 <div class="left-view">
-                    <img src="https://wochu.oss-cn-hangzhou.aliyuncs.com/upload/64f0efe2-d8b3-475c-ba52-e6b6c70324a8.jpg" alt="">
+                    <!-- <img :src="list[0].items[0].imgUrl"> -->
                     <div class="price">
-                        <p>0.01元抢3菜</p>
+                        <!-- <p>{{list[0].items[0].posDes}}</p> -->
                         <p class="ellipsis">新手专享</p>
                     </div>
                 </div>
@@ -98,16 +98,16 @@
         <!-- 横向商品展示 -->
         <div class="shop_show">
             <ul>
-                <li>
-                    <img src="https://wochu.oss-cn-hangzhou.aliyuncs.com/upload/fe1d17ee-40e6-46f4-a3f0-188ae5bc30ab.jpg" alt="">
-                    <p>南非花皮脐橙12粒超值装</p>
-                    <span>￥29.9</span>
-                    <strong>￥14.9</strong>
+                <li v-for="(item,index) in shop_show" :key="item.id">
+                    <img :src="item.imgUrl">
+                    <p>{{item.goodsName}}</p>
+                    <span>&yen;{{item.marketPrice}}</span>
+                    <strong>&yen;{{item.price}}</strong>
                     <div class="shop_show_img">
                         <img src="../../assets/img/add.png" alt="">
                     </div>
                 </li>
-                <li>
+                <!-- <li>
                     <img src="https://wochu.oss-cn-hangzhou.aliyuncs.com/upload/fe1d17ee-40e6-46f4-a3f0-188ae5bc30ab.jpg" alt="">
                     <p>南非花皮脐橙12粒超值装</p>
                     <span>￥29.9</span>
@@ -142,7 +142,7 @@
                     <div class="shop_show_img">
                         <img src="../../assets/img/add.png" alt="">
                     </div>
-                </li>
+                </li> -->
             </ul>
         </div>
         <!-- 更多团购 -->
@@ -189,8 +189,18 @@ export default {
     name: "home",
     data () {
         return {
-            
+            url:'http://api5.wochu.cn/api/app/acts?version=20.0.0&source=H',
+            list:[],
+            shop_show:[], //横向数据显示
         }
+    },
+    created(){
+        this.axios.get(this.url).then(res=>{
+            // console.log(res.data.data.acts);
+            this.list = res.data.data.acts;
+            console.log(this.list);
+            this.shop_show = this.list[3].items;
+        })
     }
 }
 </script>
@@ -473,6 +483,7 @@ export default {
         overflow: auto;
         display: flex;
         overflow-x: scroll;
+       
         overflow-y: hidden;
         white-space: nowrap;   
     }
