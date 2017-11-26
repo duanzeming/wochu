@@ -22,12 +22,12 @@
             <div class="center__right_top clearfixed">
                 <div class="float_wrap">
                     <span class="fl"></span>
-                    <p class="lable">我厨精选</p>
+                    <p class="lable">{{ imgPhoto.name }}</p>
                     <span class="fr"></span>
                 </div>
             </div>
             <ul>
-                <li v-for="(item, index) in imgList" :key="item.id"><img :src="item.img" alt=""><p>{{ item.pName }}</p></li>
+                <li v-for="(item, index) in imgPhoto.children" :key="item.id"><img :src="item.imgUrl" alt=""><p>{{ item.name }}</p></li>
             </ul>
             <!-- 分割线 -->
             <div class="fengexianone"></div>
@@ -38,12 +38,12 @@
             <div class="center__right_top clearfixed">
                 <div class="float_wrap">
                     <span class="fl"></span>
-                    <p class="lable">我厨精选</p>
+                    <p class="lable">{{ imgPhoto1.name }}</p>
                     <span class="fr"></span>
                 </div>
             </div>
             <ul>
-                <li v-for="(item, index) in imgList" :key="item.id"><img :src="item.img" alt=""><p>{{ item.pName }}</p></li>
+                <li v-for="(item, index) in imgPhoto1.children" :key="item.id"><img :src="item.imgUrl" alt=""><p>{{ item.name }}</p></li>
             </ul>
             <!-- 分割线 -->
             <div class="fengexianone"></div>
@@ -58,15 +58,20 @@ export default {
     data () {
         return {
             navList: [ "推荐","我厨优选","餐馆名菜","全部净菜","儿童专区","蔬菜","水果","肉禽蛋","水厂海鲜","乳饮西点","点心速食","粮油副食"],
-            imgList: [
-               {img: "https://wochu.oss-cn-hangzhou.aliyuncs.com/upload/7d78dba5-d085-48e4-a5f7-d60afae06ac4.jpg", pName: "全网抄底" } ,
-               {img: "https://wochu.oss-cn-hangzhou.aliyuncs.com/upload/cbaac631-3737-4629-b7ad-ddb5141c10b9.jpg", pName: "时令蔬果专区"} ,
-               {img: "https://wochu.oss-cn-hangzhou.aliyuncs.com/upload/3639cb36-2c9e-4c6c-b63f-010c31420325.jpg", pName: "限时特惠"} ,
-               {img: "https://wochu.oss-cn-hangzhou.aliyuncs.com/upload/4b7934db-f9df-41b8-a569-05ee3f3266a3.jpg", pName: "新鲜乳品"} ,
-               {img: "https://wochu.oss-cn-hangzhou.aliyuncs.com/upload/ec6cf8f8-ea6a-4e8c-8f53-8ab6a9e4175b.jpg", pName: "生猛海鲜"} ,
-               {img: "https://wochu.oss-cn-hangzhou.aliyuncs.com/upload/571d2d10-65b1-4f21-899a-59b44266f8f7.jpg", pName: "冷鲜肉禽"}
-            ]
+            url: 'http://api5.wochu.cn/client/v1/goods/GetCategoryRecommendList',
+            title: [],
+            imgPhoto: [],
+            imgPhoto1: []
         }
+    },
+    created () {
+        this.axios.get(this.url).then(res => {
+            console.log(res.data.data);
+            this.title = res.data.data;
+            this.imgPhoto = this.title[0];
+            this.imgPhoto1 = this.title[1];
+            // console.log(this.imgPhoto);
+        });
     }
 }
 </script>
