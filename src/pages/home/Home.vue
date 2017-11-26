@@ -125,6 +125,24 @@
                         <img src="../../assets/img/add.png" alt="">
                     </div>
                 </li>
+                                <li>
+                    <img src="https://wochu.oss-cn-hangzhou.aliyuncs.com/upload/fe1d17ee-40e6-46f4-a3f0-188ae5bc30ab.jpg" alt="">
+                    <p>南非花皮脐橙12粒超值装</p>
+                    <span>￥29.9</span>
+                    <strong>￥14.9</strong>
+                    <div class="shop_show_img">
+                        <img src="../../assets/img/add.png" alt="">
+                    </div>
+                </li>
+                <li>
+                    <img src="https://wochu.oss-cn-hangzhou.aliyuncs.com/upload/fe1d17ee-40e6-46f4-a3f0-188ae5bc30ab.jpg" alt="">
+                    <p>南非花皮脐橙12粒超值装</p>
+                    <span>￥29.9</span>
+                    <strong>￥14.9</strong>
+                    <div class="shop_show_img">
+                        <img src="../../assets/img/add.png" alt="">
+                    </div>
+                </li>
             </ul>
         </div>
         <!-- 更多团购 -->
@@ -255,6 +273,7 @@ export default {
     /* 限量抢购 */
     .goods-item{
         width: 100%;
+        background:#f4f4f4;
     }
     .new{
         padding:.15rem .1rem 0 .1rem;
@@ -262,7 +281,7 @@ export default {
     }
     .left-view{
         float:left;
-        width:50%;
+        width:1.75rem;
         /* height:2.6rem; */
         position: relative;
     }
@@ -272,7 +291,7 @@ export default {
     }
     .right-view{
         float:right;
-        width: 50%;
+        width: 1.75rem;
         position: relative;
     }
     .right-view img{
@@ -450,6 +469,15 @@ export default {
     }
     .shop_show ul{
         width: 100%;
+        height: 1.76rem;
+        overflow: auto;
+        display: flex;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        white-space: nowrap;   
+    }
+    .shop_show::-webkit-scrollbar{
+        display:none;
     }
     .shop_show li{
         float: left;
@@ -458,6 +486,7 @@ export default {
         width: .95rem;
         vertical-align: top;
         position: relative;
+        flex:1;
     }
     .shop_show li img{
         width: .95rem;
