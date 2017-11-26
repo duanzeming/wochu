@@ -236,7 +236,7 @@ export default {
     }
     /* 轮播图 */
     .img img{
-        width:3.75rem;
+        width:100%;
         height:1.66rem
     }
     /* 导航 */
